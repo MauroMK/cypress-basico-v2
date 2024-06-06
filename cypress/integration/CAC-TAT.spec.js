@@ -18,8 +18,8 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#phone').type('998502232')
         cy.get('select').select('Cursos')
         cy.get('textarea').type(longText, { delay: 0 })
-        cy.get('.button[type="submit"]').click()
-
+        cy.contains('button', 'Enviar').click()
+        
         cy.get('.success').should('be.visible')
     })
 
@@ -30,7 +30,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#phone').type('998502232')
         cy.get('select').select('Cursos')
         cy.get('textarea').type('Quero comprar uma saveiro rebaixada').wait(0)
-        cy.get('.button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click()
 
         cy.get('.error').should('be.visible')
     })
@@ -46,12 +46,12 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('#phone-checkbox').click()
         cy.get('select').select('Cursos')
         cy.get('textarea').type('Quero comprar uma saveiro rebaixada').wait(0)
-        cy.get('.button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click()
 
         cy.get('.error').should('be.visible')
     })
 
-    it.only('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
+    it('preenche e limpa os campos nome, sobrenome, email e telefone', function () {
         cy.get('#firstName').type('Mauro Moreno').should('have.value', 'Mauro Moreno')
         cy.get('#firstName').clear().should('have.value', '')
         
@@ -66,7 +66,7 @@ describe('Central de Atendimento ao Cliente TAT', function() {
     })
 
     it('exibe mensagem de erro ao submeter o formulário sem preencher os campos obrigatórios', function () {
-        cy.get('.button[type="submit"]').click()
+        cy.contains('button', 'Enviar').click()
 
         cy.get('.error').should('be.visible')
     })
