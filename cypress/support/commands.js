@@ -4,5 +4,5 @@ Cypress.Commands.add('fillMandatoryFieldsAndSubmit', function() {
     cy.get('#email').type('teste@tarolho.com')
     cy.get('#phone').type('998502232')
     cy.get('textarea').type('Carrodesom')
-    cy.get('.button[type="submit"]').click()
+    cy.contains('Enviar').click()
 })
