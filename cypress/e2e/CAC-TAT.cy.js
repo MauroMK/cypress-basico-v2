@@ -71,9 +71,16 @@ describe('Central de Atendimento ao Cliente TAT', function() {
         cy.get('.error').should('be.visible')
     })
 
-    it.only('envia o formuário com sucesso usando um comando customizado', function() {
+    it('envia o formuário com sucesso usando um comando customizado', function() {
         cy.fillMandatoryFieldsAndSubmit()
         cy.get('.success').should('be.visible')
+    });
+
+    it.only('seleciona um produto (YouTube) por seu texto', function() {
+        cy.get('select').select('YouTube').should('have.value', 'youtube')
+        cy.get('select').select('Mentoria').should('have.value', 'mentoria')
+        cy.get('select').select('Blog').should('have.value', 'blog')
+
     });
   })
   
